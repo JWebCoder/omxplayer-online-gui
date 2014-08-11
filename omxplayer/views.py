@@ -15,7 +15,7 @@ def index(request):
 def list_files(request):
     files = []
     directories = []
-    path = "/Users/joaomoura/"
+    path = "/Media/"
     prevFolder = ""
     if 'dir' in request.GET:
         path = request.GET["dir"]
