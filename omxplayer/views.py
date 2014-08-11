@@ -52,10 +52,10 @@ def send_text_command(command):
         'volumeup':'+',
         'languagedown':'j',
         'languageup':'k',
-        'seek-30':'\x1b\x5b\x44',
-        'seek+30':'\x1b\x5b\x43',
-        'seek-600':'\x1b\x5b\x42',
-        'seek+600':'\x1b\x5b\x41'}
+        'seekl30':'\x1b\x5b\x44',
+        'seekp30':'\x1b\x5b\x43',
+        'seekl600':'\x1b\x5b\x42',
+        'seekp600':'\x1b\x5b\x41'}
     if command in command_list:
         omx_send(command_list[command])
         return 1
