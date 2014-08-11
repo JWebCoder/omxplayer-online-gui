@@ -1,0 +1,19 @@
+<a href="javascript:void(0)" data-dir="{{ prevFolder }}" id="upFolder">UP</a><br>
+
+
+Dirs
+<ul>
+    {% for directorie in directories %}
+        <li><a href="javascript:void(0)" class="listFiles" data-dir="{{ dirpath }}{{ directorie }}/">{{ directorie }}</a></li>
+    {% endfor %}
+</ul>
+<br>
+Files
+<ul>
+    {% for file in files %}
+        <li><a href="javascript:void(0)" class="file" data-file="{{ dirpath }}{{ file }}">{{ file }}</a></li>
+    {% endfor %}
+</ul>
+
+
+<a href="javascript:void(0)" class="back">Back</a>
