@@ -34,3 +34,12 @@ def send_text_command(command):
         return 1
     else:
         return 0
+
+
+def run_cmd(request):
+    if "cmd" in request.GET:
+        return HttpResponse(omx_send(request.GET['cmd']))
+    elif "cmdText" in request.GET:
+        return HttpResponse(send_text_command(request.GET['cmdText']))
+    else:
+        return HttpResponse("Bad command")
