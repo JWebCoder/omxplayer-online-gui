@@ -41,8 +41,8 @@ a{
 
 .button-container .button{
     float:left;
-    margin: 1% 1% 1% 0;
-    width: 23%;
+    margin: 2% 2% 0 2%;
+    width: 21%;
 }
 
 .button-container .button img{
