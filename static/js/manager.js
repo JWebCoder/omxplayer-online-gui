@@ -36,7 +36,11 @@ var manager = {
     },
     
     commandButtonClick: function () {
-        manager.sendCommand(this.getAttribute("data-command"));
+        if(this.getAttribute("data-command") !== null) {
+            manager.sendCommand(this.getAttribute("data-command"));
+        } else if (this.getAttribute("data-commandText") !== null) {
+            manager.sendCommandText(this.getAttribute("data-commandText"));
+        }
     },
     
     playFile: function () {
@@ -55,6 +59,12 @@ var manager = {
     sendCommand: function (command) {
         var url;
         url = "/command?cmd=" + command;
+        j.get(url);
+    },
+    
+    sendCommandText: function (command) {
+        var url;
+        url = "/command?cmdText=" + command;
         j.get(url);
     },
 }
