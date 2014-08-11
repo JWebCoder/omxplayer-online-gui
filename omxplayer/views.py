@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'pages/home.html',)
 
 
-def listFiles(request):
+def list_files(request):
     files = []
     directories = []
     path = "/Users/joaomoura/"
@@ -63,7 +63,7 @@ def send_text_command(command):
         return 0
 
 
-def playFile(request):
+def play_file(request):
     OMXIN_FILE = "omxfifo"
     path = request.GET['file']
     subprocess.Popen('killall omxplayer.bin',stdout=subprocess.PIPE,shell=True)
