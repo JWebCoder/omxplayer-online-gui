@@ -57,7 +57,7 @@ def send_text_command(command):
         'seek-600':'\x1b\x5b\x42',
         'seek+600':'\x1b\x5b\x41'}
     if command in command_list:
-        omx_send(command_list[name])
+        omx_send(command_list[command])
         return 1
     else:
         return 0
