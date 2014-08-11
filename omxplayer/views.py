@@ -31,7 +31,7 @@ def list_files(request):
 
 
 def omx_send(data):
-    subprocess.Popen('echo -n ' + data + ' >omxfifo',shell=True)
+    subprocess.Popen('echo -n ' + data + ' > omxfifo',shell=True)
     return data
 
 
@@ -68,15 +68,15 @@ def play_file(request):
     path = request.GET['file']
     subprocess.Popen('killall omxplayer.bin',stdout=subprocess.PIPE,shell=True)
     subprocess.Popen('clear',stdout=subprocess.PIPE,shell=True)
-    subprocess.Popen('omxplayer -o hdmi ' + path + ' <' + OMXIN_FILE,shell=True)
+    subprocess.Popen('omxplayer -o hdmi ' + path + ' < ' + OMXIN_FILE,shell=True)
     omx_send('.')
     return HttpResponse('1')
 
 
 def run_cmd(request):
-    if "cmd" in request.GET:
+    if 'cmd' in request.GET:
         return HttpResponse(omx_send(request.GET['cmd']))
-    elif "cmdText" in request.GET:
+    elif 'cmdText' in request.GET:
         return HttpResponse(send_text_command(request.GET['cmdText']))
     else:
         return HttpResponse("Bad command")
