@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Raspberry Online GUI</title>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="author" content="João Moura">
+
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+		
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="Website" />
+        <meta property="og:url" content="http://" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="" />
+        
+        <!-- 16x16 -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- 32x32 -->
+        <link rel="shortcut icon" href="/favicon.png">
+        <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+        <!-- <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png"> -->
+        <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+        <!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png"> -->
+        <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+        <!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png"> -->
+        <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+        <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png"> -->
+		
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-title" content="Raspberry GUI">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <meta name="msapplication-TileImage" content="_layouts/armstrong/img/apple-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta http-equiv="cleartype" content="on">
+
+        <link href="{% static "css/screen.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="{% static "js/html5shiv.min.js" %}"></script>
+        <![endif]-->
+        <script type="text/javascript" src="{% static "js/jayScript.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/manager.js" %}"></script>
+        <script type="text/javascript">
+            j.loadGoogleFont({"Roboto":"100,300,400,700"});
+            j.loadGoogleFont({"Lato":"300,400,700"});
+        </script>
+	</head>
+	<body>
+		<section id="notification" class="hidden">
+			asd
+		</section>
+		<section id="shortcuts" class="visible">
+			{% include "shortcuts.html" %}
+		</section>
+		<section id="applications" class="hidden">
+			
+        </section>
+        <section id="menu" class="hidden">
+			{% include "menu.html" %}
+        </section>
+        <section class="swipe-layer notification-layer" data-direction="down">
+        </section>
+        <section class="swipe-layer menu-layer" data-direction="up">
+        </section>
+        <section class="swipe-layer applications-layer" data-direction="left">
+        </section>
+        <section class="swipe-layer shortcuts-layer" data-direction="right">
+        </section>
+        
+    </body>
+</html>

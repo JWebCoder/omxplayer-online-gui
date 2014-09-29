@@ -1,0 +1,12 @@
+{% extends "masterManga.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{{ name }} {{ length }}
+<br>
+{% for page in pages %}
+	<img src="{{ page.image.url }}">
+	<br>
+{% endfor %}
+{% endblock %}
