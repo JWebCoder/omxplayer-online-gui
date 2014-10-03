@@ -1,7 +1,4 @@
-{% extends "masterManga.html" %}
 {% load staticfiles %}
-
-{% block content %}
 
 {{ name }} Chapters
 <br>
@@ -10,4 +7,3 @@
         <li><a href="javascript:void(0)" data-link="{% url 'mangareader:openChapter' %}?name={{ name }}&pos={{ forloop.revcounter0 }}">{{ chapter.title }}</a></li>
     {% endfor %}
 </ul>
-{% endblock %}
