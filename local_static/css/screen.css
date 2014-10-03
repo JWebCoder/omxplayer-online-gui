@@ -1,0 +1,172 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+	width:100%;
+	height:100%;
+}
+
+body{
+    font-family: roboto;
+    background-color:#202020;
+    padding: 0;
+    color: white;
+    width: 100%;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+}
+
+li{
+    list-style: none;
+    padding-left: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.application{
+	background-color:black;
+	position: absolute;
+	left:0;
+	width:100%;
+	top:20px;
+	bottom:0;
+	transition: 0.4s left ease;
+}
+
+.application.hidden{
+	left:100%;
+}
+
+.application .main{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	overflow:auto;
+	z-index:1;
+}
+
+#notification{
+	background-color: white;
+	position: fixed;
+	left: 0;
+	right:0;
+	bottom: 95%;
+	height:100%;
+	z-index:900;
+}
+
+#menu{
+	position: fixed;
+	right:0;
+	left:0;
+	top:100%;
+}
+
+#shortcuts{
+	position: fixed;
+	top:20px;
+	right:0;
+	bottom: 0;
+	width:100%;
+	background-color:#202020;
+	transition: 0.4s right ease;
+}
+
+#shortcuts.hidden{
+	right: 100%;
+}
+
+
+#window{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    padding: 10px;
+    background-color:#202020;
+    display:none;
+    overflow:auto;
+    z-index:2;
+}
+
+.visible{
+	z-index:700;
+}
+
+.swipe-layer{
+	position: fixed;
+	z-index:1000;
+}
+
+.swipe-layer.notification-layer{
+	top:0;
+	left:0;
+	right: 0;
+	height:20px;
+}
+
+.swipe-layer.menu-layer{
+	bottom:0;
+	left:0;
+	right: 0;
+	height:20px;
+}
+
+.swipe-layer.applications-layer{
+	top:0;
+	bottom:0;
+	right: 0;
+	width:20px;
+}
+
+.swipe-layer.shortcuts-layer{
+	top:0;
+	bottom:0;
+	left: 0;
+	width:20px;
+}
+
+.button-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button-container .button{
+    float:left;
+    margin: 2% 2% 0 2%;
+    width: 21%;
+}
+
+.button-container .button img{
+    width:100%;
+}
+
+.manga-chapter{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow:auto;
+	z-index: 1;
+	background-color:black;
+}
+
+.manga-chapter img{
+	width:100%;
+}
+
+.manga-chapter.hidden{
+	display: none;
+}
