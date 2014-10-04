@@ -4,8 +4,7 @@ from mangopi.site.mangapanda import MangaPanda
 
 # Create your views here.
 def index(request):
-    url = MangaPanda.series('toriko').chapters[0].pages[0].image.url
-    return render(request, 'manga/home.html', {'url': url})
+    return render(request, 'manga/home.html')
 
 
 def list_mangas(request):
