@@ -1,0 +1,18 @@
+.manga-chapter{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow:auto;
+	z-index: 1;
+	background-color:black;
+}
+
+.manga-chapter img{
+	width:100%;
+}
+
+.manga-chapter.hidden{
+	display: none;
+}

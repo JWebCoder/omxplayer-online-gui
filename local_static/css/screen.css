@@ -135,38 +135,3 @@ a{
 	left: 0;
 	width:20px;
 }
-
-.button-container:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.button-container .button{
-    float:left;
-    margin: 2% 2% 0 2%;
-    width: 21%;
-}
-
-.button-container .button img{
-    width:100%;
-}
-
-.manga-chapter{
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	overflow:auto;
-	z-index: 1;
-	background-color:black;
-}
-
-.manga-chapter img{
-	width:100%;
-}
-
-.manga-chapter.hidden{
-	display: none;
-}

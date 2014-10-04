@@ -135,7 +135,8 @@ var manager = {
 		application = document.createElement("section");
 		application.id = appId;
 		j.addClass("application opened", application);
-		j.loadFile([{fileName: "static/js/" + appManager + ".js", fileType: 'js'}], function () {
+		j.loadFile([{fileName: "static/js/" + appManager + ".js", fileType: 'js'},
+                    {fileName: "static/css/" + appManager + ".css", fileType: 'css'}], function () {
 			caller += 1;
 		});
 		j.get(appLink, function (data) {
