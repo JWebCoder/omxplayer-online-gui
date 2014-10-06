@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'mainSite',
     'omxplayer',
     'mangareader',
+    'updater',
 )
 
 MIDDLEWARE_CLASSES = (

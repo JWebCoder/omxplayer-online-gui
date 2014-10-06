@@ -8,5 +8,6 @@ urlpatterns = patterns(
     url(r'^', include('mainSite.urls', namespace="main")),
     url(r'^', include('omxplayer.urls', namespace="omxplayer")),
     url(r'^', include('mangareader.urls', namespace="mangareader")),
+    url(r'^', include('updater.urls', namespace="updater")),
     url(r'^admin/', include(admin.site.urls)),
 )

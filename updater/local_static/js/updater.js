@@ -1,0 +1,5 @@
+var updater = {
+	init: function () {
+
+	}
+}
