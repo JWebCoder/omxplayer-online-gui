@@ -1,7 +1,11 @@
 {% load staticfiles %}
-
-<h1>{{ name }} {{ len }}</h1>
+<div class="title">
+    <div class="close">X</div>
+    <h1>{{ name }} {{ num }}</h1>
+</div>
+<div class="chapter-container">
 {% for page in pages %}
 	<img src="{{ page.image.url }}">
 	<br>
 {% endfor %}
+</div>
