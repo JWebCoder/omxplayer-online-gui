@@ -143,10 +143,11 @@ var manager = {
 			application.innerHTML = data.responseText;
 			caller += 1;
 		});
-		window.setInterval(function () {
+		interval = window.setInterval(function () {
 			if (caller === 2) {
 				window[appManager].init();
-			}
+			 window.clearInterval(interval);
+            }
 		}, 100);
 		this.body.appendChild(application);
 		

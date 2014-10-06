@@ -9,15 +9,16 @@ def index(request):
 
 def list_mangas(request):
     name = request.GET["name"]
-    url = MangaPanda.series(name)
-    return render(request, 'manga/listMangas.html', { 'name': name, 'chapters': url.chapters})
+    series = MangaPanda.series(name)
+    return render(request, 'manga/listMangas.html', { 'name': name, 'chapters': series.chapters})
 
 
 def open_chapter(request):
     name = request.GET['name']
-    pages = MangaPanda.series(name).chapters[int(request.GET['pos'])].pages
+    pos = int(request.GET['pos'])
+    pages = MangaPanda.series(name).chapters[pos].pages
     length = len(pages)
-    return render(request, 'manga/chapter.html', { 'name': name, 'pages': pages, 'len': length})
+    return render(request, 'manga/chapter.html', { 'name': name, 'pages': pages, 'num': pos})
 
 
 def read_manga(request):
