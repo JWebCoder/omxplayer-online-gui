@@ -9,7 +9,6 @@ var mangareader = {
 		j.addEvent(this.searchBtn, "click", mangareader.searchManga);
         console.log("teste");
         j.addEvent(this.text, "keyup", function (key) {
-            console.log(key.keyCode);
             if (key.keyCode === 13) {
                 mangareader.searchManga();
             }
