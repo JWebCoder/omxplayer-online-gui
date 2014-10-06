@@ -1,7 +1,6 @@
 {% load staticfiles %}
 
-{{ name }} {{ len }}
-<br>
+<h1>{{ name }} {{ len }}</h1>
 {% for page in pages %}
 	<img src="{{ page.image.url }}">
 	<br>

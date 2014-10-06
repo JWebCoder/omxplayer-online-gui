@@ -9,8 +9,8 @@ def index(request):
 
 def list_mangas(request):
     name = request.GET["name"]
-    url = MangaPanda.series(name)
-    return render(request, 'manga/listMangas.html', { 'name': name, 'chapters': url.chapters})
+    series = MangaPanda.series(name)
+    return render(request, 'manga/listMangas.html', { 'name': name, 'chapters': series.chapters})
 
 
 def open_chapter(request):
