@@ -46,7 +46,7 @@ var omxplayer = {
     playFile: function () {
         var url;
         fileBrowser = j.selectById("window");
-        url = "/omxplayer//playFile";
+        url = "/omxplayer/playFile";
         
         if(this.getAttribute("data-file") !== null) {
             url = url + "?file=" + this.getAttribute("data-file");
@@ -58,13 +58,13 @@ var omxplayer = {
     
     sendCommand: function (command) {
         var url;
-        url = "/omxplayer//command?cmd=" + command;
+        url = "/omxplayer/command?cmd=" + command;
         j.get(url);
     },
     
     sendCommandText: function (command) {
         var url;
-        url = "/omxplayer//command?cmdText=" + command;
+        url = "/omxplayer/command?cmdText=" + command;
         j.get(url);
     },
 }
