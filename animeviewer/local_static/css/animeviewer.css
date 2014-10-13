@@ -22,12 +22,12 @@
 }
 
 #animeviewer .search-result ul{
-    margin: 0 5px;
     padding: 0;
 }
 
 #animeviewer .search-result li{
     margin: 5px 3% 30px 3%;
+    padding: 0;
     float:left;
     width: 44%;
 }

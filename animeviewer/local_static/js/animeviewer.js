@@ -8,7 +8,7 @@ var animeviewer = {
 		j.addEvent(this.searchBtn, "click", animeviewer.searchAnime);
         j.addEvent(this.text, "keyup", function (key) {
             if (key.keyCode === 13) {
-                animeviewer.searchManga();
+                animeviewer.searchAnime();
             }
         });
 	},
