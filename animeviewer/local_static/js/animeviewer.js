@@ -6,7 +6,6 @@ var animeviewer = {
 		this.text = j.selectById("animeViewer-name");
 		this.result = j.selectByQuery("#animeviewer .search-result")[0];
 		j.addEvent(this.searchBtn, "click", animeviewer.searchAnime);
-        console.log("teste");
         j.addEvent(this.text, "keyup", function (key) {
             if (key.keyCode === 13) {
                 animeviewer.searchManga();
