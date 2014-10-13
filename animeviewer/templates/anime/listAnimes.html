@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+Pesquisa: {{ name }}
+<br>
+<ul class="anime-results">
+    {% for result in results %}
+        <li>
+            <a href="javascript:void(0)" data-link="">
+                <img src="{{ result.image }}">
+                {{ result.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
