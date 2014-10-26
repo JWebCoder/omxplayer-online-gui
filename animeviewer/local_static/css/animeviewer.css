@@ -45,8 +45,44 @@
     padding: 0;
     float:left;
     width: 44%;
+    display: block;
+    position: relative;
 }
 
 #animeviewer .search-result img{
     width: 100%;
+}
+
+#animeviewer .anime-dialog{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.8);
+}
+
+#animeviewer .anime-dialog .dialog-button{
+    margin: 10px 12% 0 12%;
+    text-align: center;
+    float:left;
+    width: 26%;
+}
+
+#animeviewer .anime-dialog .dialog-button img{
+    max-width: 128px;
+}
+
+#animeviewer .anime-dialog .dialog-back{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-width: 27%;
+    margin: 0;
+}
+
+#animeviewer .anime-dialog .dialog-back img{
+    display: block;
 }

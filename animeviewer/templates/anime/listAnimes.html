@@ -5,7 +5,7 @@ Pesquisa: {{ name }}
 <ul class="anime-results">
     {% for result in results %}
         <li>
-            <a href="{% if result.hd %} {{ result.hd }} {% else %} {{ result.normal }} {% endif %}" target="_blank">
+            <a anime-item href="javascript:void(0)" data-link="{% if result.hd %} {{ result.hd }} {% else %} {{ result.normal }} {% endif %}">
                 <img src="{{ result.image }}">
                 {{ result.title }}
             </a>
