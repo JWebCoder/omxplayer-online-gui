@@ -71,3 +71,18 @@
     margin: 5px 0;
     list-style: disc;
 }
+
+#mangareader .loader{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+#mangareader .hide{
+    display:none;
+}

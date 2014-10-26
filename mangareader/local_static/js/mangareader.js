@@ -6,6 +6,7 @@ var mangareader = {
 		this.text = j.selectById("mangaReader-name");
 		this.result = j.selectByQuery("#mangareader .search-result")[0];
 		this.chapter = j.selectByClass("manga-chapter")[0];
+        this.loader = j.selectByQuery("#mangareader .loader")[0];
 		j.addEvent(this.searchBtn, "click", mangareader.searchManga);
         console.log("teste");
         j.addEvent(this.text, "keyup", function (key) {
@@ -16,6 +17,7 @@ var mangareader = {
 	},
 	
     searchManga: function () {
+        j.removeClass("hide", mangareader.loader);
         j.get("mangaReader/listMangas/" + "?name=" + mangareader.text.value, function(data){
             mangareader.result.innerHTML = data.responseText;
             var chapters = j.selectByQuery(".manga-chapters li a");
@@ -24,6 +26,7 @@ var mangareader = {
                     mangareader.openManga(chapter.getAttribute("data-link"));
                 });
             });
+            j.addClass("hide", mangareader.loader);
         });
     },
     
