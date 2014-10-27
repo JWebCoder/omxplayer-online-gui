@@ -61,9 +61,7 @@ var omxplayer = {
         fileBrowser = j.selectById("window");
         url = "/omxplayer/playFile?file=" + link;
         
-        j.get(url, function (data) {
-            fileBrowser.style.display = "none";
-        });
+        j.get(url, function () {});
     },
     
     sendCommand: function (command) {
