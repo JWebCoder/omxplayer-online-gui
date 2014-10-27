@@ -85,7 +85,7 @@ var animeviewer = {
         }
         
         //close button treatment
-        function createCloseBtn(currentDialog) {
+        function createCloseBtn() {
             var tempCloseBtn, image;
             tempCloseBtn = document.createElement("div");
             j.addClass("dialog-button dialog-back", tempCloseBtn);
@@ -93,6 +93,7 @@ var animeviewer = {
             image.src = "/static/images/animeback.png";
             tempCloseBtn.appendChild(image);
             j.addEvent(tempCloseBtn, "click", function () {
+                var currentDialog = j.selectParentByClass("anime-dialog", this);
                 currentDialog.parentElement.removeChild(currentDialog);
             });
             return tempCloseBtn;
@@ -111,7 +112,7 @@ var animeviewer = {
         
         linkBtn = createLinkBtn(element.getAttribute("data-link"));
         raspBtn = createRaspBtn(element.getAttribute("data-link"));
-        closeBtn = createCloseBtn(j.selectByClass("anime-dialog", parent)[0]);
+        closeBtn = createCloseBtn();
         
         createDialog(linkBtn, raspBtn, closeBtn);
     }
