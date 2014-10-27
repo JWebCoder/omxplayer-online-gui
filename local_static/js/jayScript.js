@@ -483,15 +483,15 @@ var j = {
             maxHeight,
             maxWidth,
             docFragment = document.createDocumentFragment();
-            if (typeof box !== "undefined") {
-                
-                maxHeight = parseInt(j.getStyle(box, "height"), 10);
-                maxWidth = parseInt(j.getStyle(box, "width"), 10);
-                
-            } else {
-                maxHeight = window.innerHeight;
-                maxWidth = window.innerWidth;
-            }
+        if (typeof box !== "undefined") {
+
+            maxHeight = parseInt(j.getStyle(box, "height"), 10);
+            maxWidth = parseInt(j.getStyle(box, "width"), 10);
+
+        } else {
+            maxHeight = window.innerHeight;
+            maxWidth = window.innerWidth;
+        }
         
         function moveBox(e) {
             if (!stopMove) {

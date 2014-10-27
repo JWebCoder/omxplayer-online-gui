@@ -1,3 +1,8 @@
+/*jslint browser:true */
+/*jslint node: true */
+/*global j, omxplayer */
+'use strict';
+
 var animeviewer = {
 	searchBtn: "",
 	text: "",
@@ -25,61 +30,89 @@ var animeviewer = {
     
     clickController: function () {
         var items = j.selectByQuery("[anime-item]");
-        function openDialog() {
+        function OpenDialog() {
             animeviewer.showDialog(this);
         }
         j.forEach(items, function (item) {
-            j.addEvent(item, "click", openDialog);
+            j.addEvent(item, "click", OpenDialog);
         });
     },
     
     showDialog: function (element) {
         //define vars
-        var dialog,
-            linkBtn,
+        var linkBtn,
             raspBtn,
-            closeBtn,
-            closeImg;
-        
-        //create elements
-        dialog = document.createElement("div");
-        linkBtn = document.createElement("a");
-        raspBtn = document.createElement("a");
-        closeBtn = document.createElement("a");
-        
-        //add the classes
-        j.addClass("anime-dialog", dialog);
-        j.addClass("dialog-button", linkBtn);
-        j.addClass("dialog-button", raspBtn);
-        j.addClass("dialog-button dialog-back", closeBtn);
+            closeBtn;
         
         //link button treatment
-        closeImg = document.createElement("img");
-        closeImg.src = "/static/images/animelink.png";
-        linkBtn.appendChild(closeImg);
-        linkBtn.setAttribute("href", element.getAttribute("data-link"));
-        linkBtn.setAttribute("target", "_blank");
+        function createLinkBtn(link) {
+            var tempLinkBtn, image;
+            tempLinkBtn = document.createElement("a");
+            j.addClass("dialog-button", tempLinkBtn);
+            image = document.createElement("img");
+            image.src = "/static/images/animelink.png";
+            tempLinkBtn.appendChild(image);
+            tempLinkBtn.setAttribute("href", link);
+            tempLinkBtn.setAttribute("target", "_blank");
+            return tempLinkBtn;
+        }
         
         //rasp button treatment
-        closeImg = document.createElement("img");
-        closeImg.src = "/static/images/animeraspberry.png";
-        raspBtn.appendChild(closeImg);
-        raspBtn.setAttribute("href", "javascript:void(0)");
+        function createRaspBtn(link) {
+            var tempRaspBtn, image, omxplayerInterval;
+            tempRaspBtn = document.createElement("div");
+            j.addClass("dialog-button", tempRaspBtn);
+            image = document.createElement("img");
+            image.src = "/static/images/animeraspberry.png";
+            tempRaspBtn.appendChild(image);
+
+            j.addEvent(tempRaspBtn, "click", function () {
+                if (j.checkIfFileLoaded("omxplayer.js", "js") === true) {
+                    j.triggerEvent(j.selectByQuery("[data-appid='omxplayer']")[0], "click");
+                    omxplayer.playLink(link);
+                } else {
+                    j.triggerEvent(j.selectByQuery("[data-appid='omxplayer']")[0], "click");
+                    omxplayerInterval = window.setInterval(function () {
+                        if (typeof omxplayer !== "undefined") {
+                            window.clearInterval(omxplayerInterval);
+                            omxplayer.playLink(link);
+                        }
+                    }, 10);
+                }
+            });
+
+            return tempRaspBtn;
+        }
         
         //close button treatment
-        closeImg = document.createElement("img");
-        closeImg.src = "/static/images/animeback.png";
-        closeBtn.appendChild(closeImg);
-        closeBtn.setAttribute("href", "javascript:void(0)");
-        j.addEvent(closeBtn, "click", function () {
-            var currentDialog = j.selectByClass("anime-dialog", element.parentElement)[0];
-            currentDialog.parentElement.removeChild(currentDialog);
-        });
+        function createCloseBtn(currentDialog) {
+            var tempCloseBtn, image;
+            tempCloseBtn = document.createElement("div");
+            j.addClass("dialog-button dialog-back", tempCloseBtn);
+            image = document.createElement("img");
+            image.src = "/static/images/animeback.png";
+            tempCloseBtn.appendChild(image);
+            j.addEvent(tempCloseBtn, "click", function () {
+                currentDialog.parentElement.removeChild(currentDialog);
+            });
+            return tempCloseBtn;
+        }
         
-        //add up the items
-        dialog.appendChild(linkBtn);
-        dialog.appendChild(raspBtn);
-        dialog.appendChild(closeBtn);
-        element.parentElement.appendChild(dialog);
+        function createDialog() {
+            //add up the items
+            var dialog = document.createElement("div");
+            j.addClass("anime-dialog", dialog);
+            dialog.appendChild(linkBtn);
+            dialog.appendChild(raspBtn);
+            dialog.appendChild(closeBtn);
+            element.parentElement.appendChild(dialog);
+        }
+        
+        
+        linkBtn = createLinkBtn(element.getAttribute("data-link"));
+        raspBtn = createRaspBtn(element.getAttribute("data-link"));
+        closeBtn = createCloseBtn(j.selectByClass("anime-dialog", parent)[0]);
+        
+        createDialog(linkBtn, raspBtn, closeBtn);
     }
 };

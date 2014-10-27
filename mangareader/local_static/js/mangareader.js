@@ -1,3 +1,7 @@
+/*jslint browser:true */
+/*jslint node: true */
+/*global j */
+'use strict';
 var mangareader = {
 	searchBtn: "",
 	text: "",
@@ -18,10 +22,10 @@ var mangareader = {
 	
     searchManga: function () {
         j.removeClass("hide", mangareader.loader);
-        j.get("mangaReader/listMangas/" + "?name=" + mangareader.text.value, function(data){
+        j.get("mangaReader/listMangas/" + "?name=" + mangareader.text.value, function (data) {
             mangareader.result.innerHTML = data.responseText;
             var chapters = j.selectByQuery(".manga-chapters li a");
-            j.forEach(chapters, function (chapter){
+            j.forEach(chapters, function (chapter) {
                 j.addEvent(chapter, "click", function () {
                     mangareader.openManga(chapter.getAttribute("data-link"));
                 });
@@ -31,7 +35,7 @@ var mangareader = {
     },
     
 	openManga: function (link) {
-		j.get(link, function(data){
+		j.get(link, function (data) {
 			mangareader.chapter.innerHTML = data.responseText;
             j.addEvent(j.selectByClass("close", mangareader.chapter)[0], "click", function () {
                 j.addClass("hidden", mangareader.chapter);
@@ -39,4 +43,4 @@ var mangareader = {
 			j.removeClass("hidden", mangareader.chapter);
 		});
 	}
-}
+};

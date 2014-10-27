@@ -1,3 +1,7 @@
+/*jslint browser:true */
+/*jslint node: true */
+/*global j */
+'use strict';
 var manager = {
 	notification: "",
 	shortcuts: "",
@@ -35,7 +39,7 @@ var manager = {
 					var index = 0,
 						len = manager.openApps.length,
 						isOpen = false;
-					for (;index < len; index += 1) {
+					for (index = 0; index < len; index += 1) {
 						if (app.getAttribute("data-appid") === manager.openApps[index]) {
 							isOpen = true;
 						}
@@ -62,13 +66,14 @@ var manager = {
 				distX,
 				distY,
 				dist,
-				time;
+				time,
+                handleSwipe;
 			
-			handleSwipe = callback || function(swipeDir) {
+			handleSwipe = callback || function (swipeDir) {
 				alert(swipeDir);
-			}
+			};
 			
-			j.addEvent(el, "touchstart", function(event) {
+			j.addEvent(el, "touchstart", function (event) {
 				var touchObj = event.changedTouches[0];
 				dist = 0;
 				startX = touchObj.pageX;
@@ -76,7 +81,7 @@ var manager = {
 				startTime = new Date().getTime();
 				
 			});
-			j.addEvent(el, "touchend", function(event) {
+			j.addEvent(el, "touchend", function (event) {
 				var touchObj = "",
 					swipeDir;
 				time = new Date().getTime() - startTime;
@@ -85,15 +90,15 @@ var manager = {
 					distX = touchObj.pageX - startX;
 					distY = touchObj.pageY - startY;
 					if ((Math.abs(distX) > threshold) && (Math.abs(distY) < restraint)) {
-						if ((startX < 50) && (distX > 0) && (direction === "right")){
+						if ((startX < 50) && (distX > 0) && (direction === "right")) {
 							swipeDir = "right";
-						} else if ((startX > window.innerWidth - 50) && (distX < 0) && (direction === "left")){
+						} else if ((startX > window.innerWidth - 50) && (distX < 0) && (direction === "left")) {
 							swipeDir = "left";
 						}
 					} else if ((Math.abs(distY) > threshold) && (Math.abs(distX) < restraint)) {
-						if ((startY < 50) && (distY > 0) && (direction === "down")){
+						if ((startY < 50) && (distY > 0) && (direction === "down")) {
 							swipeDir = "down";
-						} else if ((startY > window.innerHeight - 50) && (distY < 0) && (direction === "up")){
+						} else if ((startY > window.innerHeight - 50) && (distY < 0) && (direction === "up")) {
 							swipeDir = "up";
 						}
 					}
@@ -146,14 +151,14 @@ var manager = {
 		interval = window.setInterval(function () {
 			if (caller === 2) {
 				window[appManager].init();
-			 window.clearInterval(interval);
+                window.clearInterval(interval);
             }
 		}, 100);
 		this.body.appendChild(application);
 		
 		this.showSection(application);
 	}
-}
+};
 
 j.onDomReady(function () {
     manager.init();

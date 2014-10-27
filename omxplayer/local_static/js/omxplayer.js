@@ -56,6 +56,16 @@ var omxplayer = {
         });
     },
     
+    playLink: function (link) {
+        var url;
+        fileBrowser = j.selectById("window");
+        url = "/omxplayer/playFile?file=" + link;
+        
+        j.get(url, function (data) {
+            fileBrowser.style.display = "none";
+        });
+    },
+    
     sendCommand: function (command) {
         var url;
         url = "/omxplayer/command?cmd=" + command;
