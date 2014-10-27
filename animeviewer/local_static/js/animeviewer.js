@@ -67,7 +67,7 @@ var animeviewer = {
             tempRaspBtn.appendChild(image);
 
             j.addEvent(tempRaspBtn, "click", function () {
-                if (j.checkIfFileLoaded("omxplayer.js", "js") === true) {
+                if (j.checkIfFileLoaded("omxplayer.js", "js") === false) {
                     j.triggerEvent(j.selectByQuery("[data-appid='omxplayer']")[0], "click");
                     omxplayer.playLink(link);
                 } else {
@@ -76,9 +76,7 @@ var animeviewer = {
                         if (typeof omxplayer !== "undefined") {
                             if (typeof omxplayer.playLink === "function") {
                                 window.clearInterval(omxplayerInterval);
-                                window.setTimeout(function () {
-                                    omxplayer.playLink(link);
-                                }, 100);
+                                omxplayer.playLink(link);
                             }
                         }
                     }, 10);
