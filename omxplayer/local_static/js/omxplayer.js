@@ -68,7 +68,7 @@ var omxplayer = {
     
     sendCommand: function (command) {
         var url;
-        url = "/omxplayer/command?cmd=" + command;
+        url = "/omxplayer/command/?cmd=" + command;
         j.get(url);
     },
     
