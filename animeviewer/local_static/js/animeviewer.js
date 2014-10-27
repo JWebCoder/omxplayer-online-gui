@@ -74,8 +74,12 @@ var animeviewer = {
                     j.triggerEvent(j.selectByQuery("[data-appid='omxplayer']")[0], "click");
                     omxplayerInterval = window.setInterval(function () {
                         if (typeof omxplayer !== "undefined") {
-                            window.clearInterval(omxplayerInterval);
-                            omxplayer.playLink(link);
+                            if (typeof omxplayer.playLink === "function") {
+                                window.clearInterval(omxplayerInterval);
+                                window.setTimeout(function () {
+                                    omxplayer.playLink(link);
+                                }, 100);
+                            }
                         }
                     }, 10);
                 }
