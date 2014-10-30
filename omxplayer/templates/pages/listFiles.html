@@ -4,17 +4,17 @@
 </a><br>
 
 
-Dirs
+Directories
 <ul>
     {% for directorie in directories %}
-        <li><a href="javascript:void(0)" class="listFiles" data-dir="{{ dirpath }}{{ directorie }}/">{{ directorie }}</a></li>
+        <li><a href="javascript:void(0)" class="listFiles" data-dir="{{ dirpath }}{{ directorie }}/"><img class="icon" src="{% static "images/folder64.png" %}">{{ directorie }}</a></li>
     {% endfor %}
 </ul>
 <br>
 Files
 <ul>
     {% for file in files %}
-        <li><a href="javascript:void(0)" class="file" data-file="{{ dirpath }}{{ file }}">{{ file }}</a></li>
+        <li><a href="javascript:void(0)" class="file" data-file="{{ dirpath }}{{ file }}"><img class="icon" src="{% static "images/file64.png" %}">{{ file }}</a></li>
     {% endfor %}
 </ul>
 

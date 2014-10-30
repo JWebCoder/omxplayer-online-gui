@@ -13,3 +13,10 @@
 .button-container .button img{
     width:100%;
 }
+
+#omxplayer .icon{
+    width: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
