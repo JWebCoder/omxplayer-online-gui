@@ -18,5 +18,9 @@
     width: 25px;
     margin-right: 10px;
     vertical-align: middle;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+}
+
+#omxplayer #window li{
+    margin-top: 5px;
 }
