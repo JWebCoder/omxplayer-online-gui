@@ -12,16 +12,7 @@
     outline: none;
 }
 
-#animeviewer .search-result{
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    right: 10px;
-    bottom: 0;
-    overflow: auto;
-}
-
-#animeviewer .anime-list{
+#animeviewer .search-result, #animeviewer .anime-list, #animeviewer .episode-list{
     position: absolute;
     top: 50px;
     left: 10px;
@@ -42,6 +33,14 @@
 
 #animeviewer .anime-list li{
     list-style: none;
+    padding: 10px 10px 0 10px;
+}
+
+#animeviewer .anime-list li a{
+    display: block;
+    padding: 5px;
+    border: 1px solid white;
+    
 }
 
 #animeviewer .loader{

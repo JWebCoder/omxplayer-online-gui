@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+Anime: {{ name }}
+<br>
+<ul class="episode-results">
+    {% for episode in episodes %}
+        <li>
+            <a anime-item href="javascript:void(0)" data-link="{% if result.hd %}{{ result.hd }}{% else %}{{ result.normal }}{% endif %}">
+                <img src="{{ result.image }}">
+                {{ result.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

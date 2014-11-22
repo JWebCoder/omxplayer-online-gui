@@ -6,18 +6,20 @@
 		<a href="javascript:void(0)" class="search">Pesquisar</a>
 	</section>
 	<section class="anime-list">
-	    {% for anime in animeList %}
-        <ul>
-            <li>
+	    <ul>
+            {% for anime in animeList %}
+            <li data-animeId="{{ anime.animeId }}">
                 <a href="javascript:void(0)">
                     <img src="http://www.anime-planet.com{{ anime.image }}">
                     {{ anime.title }}
                 </a>
             </li>
+            {% endfor %}
         </ul>
-        {% endfor %}
 	</section>
-	<section class="search-result">
+	<section class="episode-list hide">
+	</section>
+	<section class="search-result hide">
 	</section>
 	<section class="loader hide">
 	    <img src="{% static 'images/loader.gif' %}">

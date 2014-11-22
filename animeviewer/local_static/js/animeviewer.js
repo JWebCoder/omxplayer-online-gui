@@ -12,17 +12,32 @@ var animeviewer = {
 		this.result = j.selectByQuery("#animeviewer .search-result")[0];
         this.loader = j.selectByQuery("#animeviewer .loader")[0];
         this.animeList = j.selectByQuery("#animeviewer .anime-list")[0];
-		j.addEvent(this.searchBtn, "click", animeviewer.searchAnime);
+        this.episodeList = j.selectByQuery("#animeviewer .episode-list")[0];
+        this.bookmarks = j.selectByTag("li", this.animeList);
+        j.forEach(this.bookmarks, function (bookmark) {
+            j.addEvent(bookmark, "click", this.listEpisodes);
+        }, this);
+		j.addEvent(this.searchBtn, "click", this.searchAnime);
         j.addEvent(this.text, "keyup", function (key) {
             if (key.keyCode === 13) {
                 animeviewer.searchAnime();
             }
         });
 	},
+    
+    listEpisodes: function () {
+        var animeId = this.getAttribute("animeId");
+        j.get("animeViewer/listEpisode/" + "?animeId=" + animeId, function (data) {
+            animeviewer.episodeList.innerHTML = data.responseText;
+            j.addClass("hide", animeviewer.animeList);
+            j.removeClass("hide", animeviewer.episodeList);
+            animeviewer.clickController();
+        });
+    },
 	
     searchAnime: function () {
         j.removeClass("hide", animeviewer.loader);
-        j.get("animeViewer/listAnimes/" + "?name=" + animeviewer.text.value, function (data) {
+        j.get("animeViewer/searchEpisodes/" + "?name=" + animeviewer.text.value, function (data) {
             animeviewer.result.innerHTML = data.responseText;
             j.addClass("hide", animeviewer.animeList);
             j.removeClass("hide", animeviewer.result);
