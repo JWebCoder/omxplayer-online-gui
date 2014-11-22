@@ -21,6 +21,29 @@
     overflow: auto;
 }
 
+#animeviewer .anime-list{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    overflow: auto;
+}
+
+#animeviewer .anime-list ul{
+    padding: 0;
+    margin: 10px 0;
+}
+
+#animeviewer .anime-list img{
+    width: 30%;
+    max-width: 200px;
+}
+
+#animeviewer .anime-list li{
+    list-style: none;
+}
+
 #animeviewer .loader{
     position: absolute;
     top: 50px;

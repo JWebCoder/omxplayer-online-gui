@@ -23,6 +23,7 @@ var animeviewer = {
         j.removeClass("hide", animeviewer.loader);
         j.get("animeViewer/listAnimes/" + "?name=" + animeviewer.text.value, function (data) {
             animeviewer.result.innerHTML = data.responseText;
+            j.removeClass("hide", animeviewer.result);
             j.addClass("hide", animeviewer.loader);
             animeviewer.clickController();
         });
