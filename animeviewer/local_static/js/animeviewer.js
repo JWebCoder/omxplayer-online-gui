@@ -11,6 +11,7 @@ var animeviewer = {
 		this.text = j.selectById("animeViewer-name");
 		this.result = j.selectByQuery("#animeviewer .search-result")[0];
         this.loader = j.selectByQuery("#animeviewer .loader")[0];
+        this.animeList = j.selectByQuery("#animeviewer .anime-list")[0];
 		j.addEvent(this.searchBtn, "click", animeviewer.searchAnime);
         j.addEvent(this.text, "keyup", function (key) {
             if (key.keyCode === 13) {
@@ -23,6 +24,7 @@ var animeviewer = {
         j.removeClass("hide", animeviewer.loader);
         j.get("animeViewer/listAnimes/" + "?name=" + animeviewer.text.value, function (data) {
             animeviewer.result.innerHTML = data.responseText;
+            j.removeClass("hide", animeviewer.animeList);
             j.removeClass("hide", animeviewer.result);
             j.addClass("hide", animeviewer.loader);
             animeviewer.clickController();
