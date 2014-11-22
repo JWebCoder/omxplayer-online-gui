@@ -27,7 +27,7 @@ var animeviewer = {
     
     listEpisodes: function () {
         var animeId = this.getAttribute("animeId");
-        j.get("animeViewer/listEpisode/" + "?animeId=" + animeId, function (data) {
+        j.get("animeViewer/listEpisodes/" + "?animeId=" + animeId, function (data) {
             animeviewer.episodeList.innerHTML = data.responseText;
             j.addClass("hide", animeviewer.animeList);
             j.removeClass("hide", animeviewer.episodeList);
