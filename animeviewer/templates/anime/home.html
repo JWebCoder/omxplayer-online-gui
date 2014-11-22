@@ -5,6 +5,18 @@
 		<input name="name" id="animeViewer-name" type="text">
 		<a href="javascript:void(0)" class="search">Pesquisar</a>
 	</section>
+	<section class="anime-list">
+	    {% for anime in animeList %}
+        <ul>
+            <li>
+                <a href="javascript:void(0)">
+                    <img src="{{ anime['image'] }}">
+                    {{ anime.title }}
+                </a>
+            </li>
+        </ul>
+        {% endfor %}
+	</section>
 	<section class="search-result">
 	</section>
 	<section class="loader hide">

@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from animapy import anime
+from animeviewer.animeDB import animeDB
 
 # Create your views here.
 def index(request):
-    return render(request, 'anime/home.html')
+    animes = animeDB()
+
+    animes.openConnection()
+    animesList = animes.getAnimeList()
+    animes.closeConnection()
+    return render(request, 'anime/home.html', { 'animeList': animeList })
 
 
 def list_animes(request):
