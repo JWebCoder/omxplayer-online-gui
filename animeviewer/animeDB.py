@@ -13,6 +13,6 @@ class animeDB(object):
         return self.cur.fetchall()
     
     def getAnimeList(self):
-        self.cur.execute("SELECT * FROM animes)
+        self.cur.execute("SELECT * FROM animes")
         self.cur.fetchall()
         return self.cur.fetchall()
