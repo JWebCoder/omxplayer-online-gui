@@ -8,7 +8,7 @@ def index(request):
     animes = animeDB()
 
     animes.openConnection()
-    animesList = animes.getAnimeList()
+    animeList = animes.getAnimeList()
     animes.closeConnection()
     return render(request, 'anime/home.html', { 'animeList': animeList })
 
