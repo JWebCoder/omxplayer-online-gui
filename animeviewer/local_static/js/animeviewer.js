@@ -14,10 +14,12 @@ var animeviewer = {
         this.animeList = j.selectByQuery("#animeviewer .anime-list")[0];
         this.episodeList = j.selectByQuery("#animeviewer .episode-list")[0];
         this.bookmarks = j.selectByTag("li", this.animeList);
+        
         j.forEach(this.bookmarks, function (bookmark) {
             j.addEvent(bookmark, "click", this.listEpisodes);
         }, this);
-		j.addEvent(this.searchBtn, "click", this.searchAnime);
+		
+        j.addEvent(this.searchBtn, "click", this.searchAnime);
         j.addEvent(this.text, "keyup", function (key) {
             if (key.keyCode === 13) {
                 animeviewer.searchAnime();
@@ -25,13 +27,19 @@ var animeviewer = {
         });
 	},
     
+    hideAndShow: function (target) {
+        j.addClass("hide", this.result);
+        j.addClass("hide", this.animeList);
+        j.addClass("hide", this.episodeList);
+        j.removeClass("hide", target);
+    },
+    
     listEpisodes: function () {
-        var animeId = this.getAttribute("animeId");
+        var animeId = this.getAttribute("data-animeid");
         j.get("animeViewer/listEpisodes/" + "?animeId=" + animeId, function (data) {
             animeviewer.episodeList.innerHTML = data.responseText;
-            j.addClass("hide", animeviewer.animeList);
-            j.removeClass("hide", animeviewer.episodeList);
-            animeviewer.clickController();
+            animeviewer.hideAndShow(animeviewer.episodeList);
+            animeviewer.clickController(animeviewer.episodeList);
         });
     },
 	
@@ -39,15 +47,14 @@ var animeviewer = {
         j.removeClass("hide", animeviewer.loader);
         j.get("animeViewer/searchEpisodes/" + "?name=" + animeviewer.text.value, function (data) {
             animeviewer.result.innerHTML = data.responseText;
-            j.addClass("hide", animeviewer.animeList);
-            j.removeClass("hide", animeviewer.result);
+            animeviewer.hideAndShow(animeviewer.result);
             j.addClass("hide", animeviewer.loader);
-            animeviewer.clickController();
+            animeviewer.clickController(animeviewer.result);
         });
     },
     
-    clickController: function () {
-        var items = j.selectByQuery("[anime-item]");
+    clickController: function (container) {
+        var items = j.selectByQuery("[anime-item]", container);
         function OpenDialog() {
             animeviewer.showDialog(this);
         }
@@ -60,7 +67,8 @@ var animeviewer = {
         //define vars
         var linkBtn,
             raspBtn,
-            closeBtn;
+            closeBtn,
+            link = "";
         
         //link button treatment
         function createLinkBtn(link) {
@@ -129,9 +137,13 @@ var animeviewer = {
             element.parentElement.appendChild(dialog);
         }
         
-        
-        linkBtn = createLinkBtn(element.getAttribute("data-link"));
-        raspBtn = createRaspBtn(element.getAttribute("data-link"));
+        if (element.hasAttribute("data-pagelink")) {
+            link = "/animeViewer/getEpisodeLink/?pageLink=" + element.getAttribute("data-pagelink");
+        } else {
+            link = element.getAttribute("data-link");
+        }
+        linkBtn = createLinkBtn(link);
+        raspBtn = createRaspBtn(link);
         closeBtn = createCloseBtn();
         
         createDialog(linkBtn, raspBtn, closeBtn);

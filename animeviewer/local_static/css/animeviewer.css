@@ -58,11 +58,11 @@
     display:none;
 }
 
-#animeviewer .search-result ul{
+#animeviewer .search-result ul, #animeviewer .episode-list ul{
     padding: 0;
 }
 
-#animeviewer .search-result li{
+#animeviewer .search-result li, #animeviewer .episode-list li{
     margin: 5px 3% 30px 3%;
     padding: 0;
     float:left;
@@ -71,7 +71,7 @@
     position: relative;
 }
 
-#animeviewer .search-result img{
+#animeviewer .search-result img, #animeviewer .episode-list img{
     width: 100%;
 }
 

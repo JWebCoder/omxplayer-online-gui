@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from animapy import anime
 from animeviewer.animeDB import animeDB
@@ -21,6 +21,14 @@ def list_episodes(request):
     name = "Naruto"
     return render(request, 'anime/listEpisodes.html', { 'name': name, 'episodes': episodes})
 
+
+def get_episode_link(request):
+    pageLink = request.GET["pageLink"]
+    links = anime.getAnimeLinks(pageLink)
+    if hasattr(links, 'hd'):
+        return redirect (links.hd)
+    else:
+        return redirect (links.normal)
 
 def search_episodes(request):
     name = request.GET["name"]

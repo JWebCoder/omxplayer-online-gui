@@ -3,12 +3,7 @@
 Pesquisa: {{ name }}
 <br>
 <ul class="anime-results">
-    {% for result in results %}
-        <li>
-            <a anime-item href="javascript:void(0)" data-link="{% if result.hd %}{{ result.hd }}{% else %}{{ result.normal }}{% endif %}">
-                <img src="{{ result.image }}">
-                {{ result.title }}
-            </a>
-        </li>
+    {% for episode in results %}
+        {% include "anime/episode.html" with episodeData=episode %}
     {% endfor %}
 </ul>
