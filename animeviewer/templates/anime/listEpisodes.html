@@ -3,7 +3,7 @@
 Anime: {{ name }}
 <br>
 <ul class="episode-results">
-    {% for episode in episodes %}
+    {% for episode in episodes reversed %}
         {% include "anime/episode.html" with episodeData=episode usePageLink=True %}
     {% endfor %}
 </ul>
