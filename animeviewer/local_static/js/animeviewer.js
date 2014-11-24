@@ -141,9 +141,19 @@ var animeviewer = {
             tempRefreshBtn.appendChild(image);
             j.addEvent(tempRefreshBtn, "click", function () {
                 j.get("/animeViewer/refreshEpisode/?episodeId=" + episodeId + "&episodeNumber=" + episodeNumber, function (data) {
-                    var parent = element.parentElement;
-                    parent.innerHTML = data.responseText;
-                    animeviewer.clickController(parent);
+                    var parent = element.parentElement,
+                        tempElement,
+                        newElement;
+                    //creates the new episode <li>
+                    tempElement = document.createElement("div");
+                    tempElement.innerHTML = data.responseText;
+                    newElement = tempElement.childNodes[0];
+                    
+                    //replaces the current <li>
+                    parent.parentNode.replaceChild(newElement, parent);
+                    
+                    //adds the event to the new <li>[anime-items]
+                    animeviewer.clickController(newElement);
                 });
             });
             return tempRefreshBtn;
