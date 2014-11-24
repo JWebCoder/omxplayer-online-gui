@@ -37,7 +37,7 @@ def refresh_episode(request):
     animes.openConnection()
     episode = animes.updateEpisodeMetadataDB(episodeId, episodeNumber)
     animes.closeConnection()
-    return render(request, 'anime/listEpisodes.html', { 'usePageLink': True, 'episodeData': episode, 'number': episodeNumber })
+    return render(request, 'anime/episode.html', { 'usePageLink': True, 'episodeData': episode, 'number': episodeNumber })
     
 def search_episodes(request):
     name = request.GET["name"]
