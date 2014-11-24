@@ -75,8 +75,8 @@ class animeDB(object):
         #gets animeTitle
         self.cur.execute("SELECT animes.page FROM animes, episodes where animes.animeId=episodes.animeId and episodeId="+episodeId)
         page = self.cur.fetchone()['page']
-        metadata = getAnimeMetadata(page)
-        episode = getEpisodesMetadata(metadata['episodeCount'], episodeNumber, 1, page)
+        metadata = self.getAnimeMetadata(page)
+        episode = self.getEpisodesMetadata(metadata['episodeCount'], episodeNumber, 1, page)
         self.cur.execute("UPDATE episodes SET title='" + episode[0]['title'] + "', image='" + episode[0]['image'] + "', pageLink='" + episode[0]['link'] + "' WHERE episodeId=" + episodeId)
         self.conn.commit()
         self.cur.execute("SELECT * FROM episodes where episodeId=" + episodeId)
