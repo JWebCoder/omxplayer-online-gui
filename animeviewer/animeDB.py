@@ -73,7 +73,9 @@ class animeDB(object):
     
     def updateEpisodeMetadataDB(self, episodeId, episodeNumber):
         #gets animeTitle
-        self.cur.execute("SELECT animes.page FROM animes, episodes where animes.animeId=episodes.animeId and episodeId="+episodeId)
+        episodeId = int(episodeId)
+        episodeNumber = int(episodeNumber)
+        self.cur.execute("SELECT animes.page FROM animes, episodes where animes.animeId=episodes.animeId and episodeId=" + episodeId)
         page = self.cur.fetchone()['page']
         metadata = self.getAnimeMetadata(page)
         episode = self.getEpisodesMetadata(metadata['episodeCount'], episodeNumber, 1, page)
