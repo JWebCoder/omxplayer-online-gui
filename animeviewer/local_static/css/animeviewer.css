@@ -93,7 +93,8 @@
 }
 
 #animeviewer .anime-dialog .dialog-button img{
-    max-width: 128px;
+    max-width: 88px;
+    width:90%;
 }
 
 #animeviewer .anime-dialog .dialog-back{

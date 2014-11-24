@@ -68,7 +68,10 @@ var animeviewer = {
         var linkBtn,
             raspBtn,
             closeBtn,
-            link = "";
+            link = "",
+            episodeId,
+            episodeNumber,
+            refreshBtn;
         
         //link button treatment
         function createLinkBtn(link) {
@@ -116,7 +119,7 @@ var animeviewer = {
         function createCloseBtn() {
             var tempCloseBtn, image;
             tempCloseBtn = document.createElement("div");
-            j.addClass("dialog-button dialog-back", tempCloseBtn);
+            j.addClass("dialog-button", tempCloseBtn);
             image = document.createElement("img");
             image.src = "/static/images/animeback.png";
             tempCloseBtn.appendChild(image);
@@ -127,25 +130,53 @@ var animeviewer = {
             return tempCloseBtn;
         }
         
+        //refresh button treatment
+        function createRefreshBtn() {
+            var tempRefreshBtn,
+                image,
+                episodeId,
+                episodeNumber;
+            tempRefreshBtn = document.createElement("div");
+            j.addClass("dialog-button", tempRefreshBtn);
+            image = document.createElement("img");
+            image.src = "/static/images/animerefresh.png";
+            tempRefreshBtn.appendChild(image);
+            j.addEvent(tempRefreshBtn, "click", function () {
+                j.get("/animeViewer/refreshEpisode/?episodeId=" + episodeId + "&episodeNumber=" + episodeNumber, function (data) {
+                    var parent = element.parentElement;
+                    parent.innerHTML = data.responseText;
+                    animeviewer.clickController(parent);
+                });
+            });
+            return tempRefreshBtn;
+        }
+        
         function createDialog() {
             //add up the items
             var dialog = document.createElement("div");
             j.addClass("anime-dialog", dialog);
             dialog.appendChild(linkBtn);
             dialog.appendChild(raspBtn);
+            if (refreshBtn !== "") {
+                dialog.appendChild(refreshBtn);
+            }
             dialog.appendChild(closeBtn);
             element.parentElement.appendChild(dialog);
         }
         
         if (element.hasAttribute("data-pagelink")) {
+            episodeId = element.getAttribute("data-episodeId");
+            episodeNumber = element.getAttribute("data-number");
+            refreshBtn = createRefreshBtn(episodeId, episodeNumber);
             link = "/animeViewer/getEpisodeLink/?pageLink=" + element.getAttribute("data-pagelink");
         } else {
+            refreshBtn = "";
             link = element.getAttribute("data-link");
         }
         linkBtn = createLinkBtn(link);
         raspBtn = createRaspBtn(link);
         closeBtn = createCloseBtn();
         
-        createDialog(linkBtn, raspBtn, closeBtn);
+        createDialog();
     }
 };
