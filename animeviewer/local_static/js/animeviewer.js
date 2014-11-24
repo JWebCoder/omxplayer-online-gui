@@ -131,11 +131,9 @@ var animeviewer = {
         }
         
         //refresh button treatment
-        function createRefreshBtn() {
+        function createRefreshBtn(episodeId, episodeNumber) {
             var tempRefreshBtn,
-                image,
-                episodeId,
-                episodeNumber;
+                image;
             tempRefreshBtn = document.createElement("div");
             j.addClass("dialog-button", tempRefreshBtn);
             image = document.createElement("img");
