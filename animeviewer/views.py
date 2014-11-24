@@ -18,8 +18,7 @@ def list_episodes(request):
     animes.openConnection()
     episodes = animes.getEpisodeList(animeId)
     animes.closeConnection()
-    name = "Naruto"
-    return render(request, 'anime/listEpisodes.html', { 'name': name, 'episodes': episodes})
+    return render(request, 'anime/listEpisodes.html', { 'episodes': episodes})
 
 
 def get_episode_link(request):
