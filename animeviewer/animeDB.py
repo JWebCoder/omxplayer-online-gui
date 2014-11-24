@@ -71,8 +71,13 @@ class animeDB(object):
                             break
         return listLinks
     
-    def updateEpisodeMetadataDB(episodeId, animeTitle, episodeNumber):
-        metadata = getAnimeMetadata(animeTitle)
-        episode = getEpisodesMetadata(metadata['episodeCount'], episodeNumber, 1, animeTitle)
+    def updateEpisodeMetadataDB(episodeId, episodeNumber):
+        #gets animeTitle
+        self.cur.execute("SELECT animes.page FROM animes, episodes where animes.animeId=episodes.animeId and episodeId="+episodeId)
+        page = self.cur.fetchone()['page']
+        metadata = getAnimeMetadata(page)
+        episode = getEpisodesMetadata(metadata['episodeCount'], episodeNumber, 1, page)
         self.cur.execute("UPDATE episodes SET title='" + episode[0]['title'] + "', image='" + episode[0]['image'] + "', pageLink='" + episode[0]['link'] + "' WHERE episodeId=" + episodeId)
         self.conn.commit()
+        self.cur.execute("SELECT * FROM episodes where episodeId=" + episodeId)
+        return self.cur.fetchone()

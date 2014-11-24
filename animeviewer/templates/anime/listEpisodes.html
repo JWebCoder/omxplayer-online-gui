@@ -4,6 +4,6 @@ Anime: {{ name }}
 <br>
 <ul class="episode-results">
     {% for episode in episodes reversed %}
-        {% include "anime/episode.html" with episodeData=episode usePageLink=True %}
+        {% include "anime/episode.html" with episodeData=episode usePageLink=True number=forloop.counter %}
     {% endfor %}
 </ul>
