@@ -1,6 +1,6 @@
 <li>
     {% if usePageLink %}
-    <a anime-item href="javascript:void(0)" data-pagelink="{{ episodeData.pageLink }}" data-episodeNumber="{{ number }}">
+    <a anime-item href="javascript:void(0)" data-pagelink="{{ episodeData.pageLink }}" data-episodeid="{{ episodeData.episodeId }}" data-episodenumber="{{ number }}">
     {% else %}
     <a anime-item href="javascript:void(0)" data-link="{% if episodeData.hd %}{{ episodeData.hd }}{% else %}{{ episodeData.normal }}{% endif %}">
     {% endif %}

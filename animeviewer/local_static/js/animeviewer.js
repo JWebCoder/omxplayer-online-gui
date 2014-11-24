@@ -166,7 +166,7 @@ var animeviewer = {
         
         if (element.hasAttribute("data-pagelink")) {
             episodeId = element.getAttribute("data-episodeId");
-            episodeNumber = element.getAttribute("data-number");
+            episodeNumber = element.getAttribute("data-episodenumber");
             refreshBtn = createRefreshBtn(episodeId, episodeNumber);
             link = "/animeViewer/getEpisodeLink/?pageLink=" + element.getAttribute("data-pagelink");
         } else {

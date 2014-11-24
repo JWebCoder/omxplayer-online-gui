@@ -20,7 +20,7 @@ class animeDB(object):
         self.cur.execute("SELECT * FROM animes")
         return self.cur.fetchall()
     
-    def getAnimeMetadata(search):
+    def getAnimeMetadata(self, search):
         link = 'http://www.anime-planet.com/anime/' + search 
         request = urllib2.Request(link.encode('ascii','ignore'), headers={'User-Agent' : "Magic Browser"})
         content = urllib2.urlopen(request).read()
@@ -42,7 +42,7 @@ class animeDB(object):
         itemCount = int(epsCountString)
         return {'title': title, 'image': image, 'description': description, 'episodeCount': itemCount, 'status': status}
 
-    def getEpisodesMetadata(itemCount, offset, quant, search):
+    def getEpisodesMetadata(self, itemCount, offset, quant, search):
         searchQuery = search.replace("-", " ")
         meta = doublemetaphone(searchQuery)
         quantDigits = len(str(itemCount))
@@ -71,7 +71,7 @@ class animeDB(object):
                             break
         return listLinks
     
-    def updateEpisodeMetadataDB(episodeId, episodeNumber):
+    def updateEpisodeMetadataDB(self, episodeId, episodeNumber):
         #gets animeTitle
         self.cur.execute("SELECT animes.page FROM animes, episodes where animes.animeId=episodes.animeId and episodeId="+episodeId)
         page = self.cur.fetchone()['page']
