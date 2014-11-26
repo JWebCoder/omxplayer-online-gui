@@ -7,6 +7,7 @@ import MySQLdb
 class animeDB(object):
     def openConnection(self):
         self.conn = MySQLdb.connect(host='localhost', user='root', passwd='Darksier11', db='animeviewer')
+        #self.conn = MySQLdb.connect(host='localhost', user='root', passwd='', db='animeviewer')
         self.cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
         
     def closeConnection(self):
