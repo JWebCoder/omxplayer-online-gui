@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'omxplayer',
     'mangareader',
     'animeviewer',
+    'wareztuga',
     'updater',
 )
 
@@ -91,6 +92,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "omxplayer/local_static"),
     os.path.join(BASE_DIR, "mangareader/local_static"),
     os.path.join(BASE_DIR, "animeviewer/local_static"),
+    os.path.join(BASE_DIR, "wareztuga/local_static"),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
