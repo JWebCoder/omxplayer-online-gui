@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'omxplayer',
     'mangareader',
     'animeviewer',
-    'wareztuga',
+    #'wareztuga',
     'updater',
 )
 
