@@ -1,0 +1,26 @@
+.button-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button-container .button{
+    float:left;
+    margin: 2% 2% 0 2%;
+    width: 21%;
+}
+
+.button-container .button img{
+    width:100%;
+}
+
+#omxplayer .icon{
+    width: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-bottom: 6px;
+}
+
+#omxplayer #window li{
+    margin-top: 5px;
+}

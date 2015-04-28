@@ -7,21 +7,13 @@ var animeviewer = {
 	searchBtn: "",
 	text: "",
 	init: function () {
-		var self = this;
-        this.searchBtn = j.selectByQuery("#animeviewer a.search")[0];
+		this.searchBtn = j.selectByQuery("#animeviewer a.search")[0];
 		this.text = j.selectById("animeViewer-name");
 		this.result = j.selectByQuery("#animeviewer .search-result")[0];
         this.loader = j.selectByQuery("#animeviewer .loader")[0];
         this.animeList = j.selectByQuery("#animeviewer .anime-list")[0];
         this.episodeList = j.selectByQuery("#animeviewer .episode-list")[0];
         this.bookmarks = j.selectByTag("li", this.animeList);
-        this.menu = j.selectByQuery("#animeviewer .menu")[0];
-        this.backButton = j.selectByClass("back", this.menu)[0];
-        
-        j.addEvent(this.backButton, "click", function () {
-            self.hideAndShow(self.animeList);
-            self.changeMenuState("0");
-        });
         
         j.forEach(this.bookmarks, function (bookmark) {
             j.addEvent(bookmark, "click", this.listEpisodes);
@@ -42,16 +34,11 @@ var animeviewer = {
         j.removeClass("hide", target);
     },
     
-    changeMenuState: function (state) {
-        this.menu.setAttribute("data-state", state);
-    },
-    
     listEpisodes: function () {
         var animeId = this.getAttribute("data-animeid");
         j.get("animeViewer/listEpisodes/" + "?animeId=" + animeId, function (data) {
             animeviewer.episodeList.innerHTML = data.responseText;
             animeviewer.hideAndShow(animeviewer.episodeList);
-            animeviewer.changeMenuState("1");
             animeviewer.clickController(animeviewer.episodeList);
         });
     },
@@ -61,7 +48,6 @@ var animeviewer = {
         j.get("animeViewer/searchEpisodes/" + "?name=" + animeviewer.text.value, function (data) {
             animeviewer.result.innerHTML = data.responseText;
             animeviewer.hideAndShow(animeviewer.result);
-            animeviewer.changeMenuState("1");
             j.addClass("hide", animeviewer.loader);
             animeviewer.clickController(animeviewer.result);
         });
@@ -190,7 +176,7 @@ var animeviewer = {
             episodeId = element.getAttribute("data-episodeId");
             episodeNumber = element.getAttribute("data-episodenumber");
             refreshBtn = createRefreshBtn(episodeId, episodeNumber);
-            link = "http://localhost:8000/animeViewer/getEpisodeLink/?pageLink=" + element.getAttribute("data-pagelink");
+            link = "/animeViewer/getEpisodeLink/?pageLink=" + element.getAttribute("data-pagelink");
         } else {
             refreshBtn = "";
             link = element.getAttribute("data-link");

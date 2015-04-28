@@ -15,21 +15,18 @@ indent_mode=2
 [project]
 name=raspberry
 base_path=/home/pi/raspberry/
+description=
 
 [long line marker]
 long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=999;Javascript;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2Fstatic%2Fjs%2Fmanager.js;0;4
-FILE_NAME_1=2055;HTML;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2Fomxplayer%2Ftemplates%2Fpages%2Fhome.html;0;4
-FILE_NAME_2=152;HTML;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2Fomxplayer%2Ftemplates%2Fpages%2FlistFiles.html;0;4
-FILE_NAME_3=612;CSS;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2Fstatic%2Fcss%2Fscreen.css;0;4
-FILE_NAME_4=654;Python;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2Fraspberry%2Fsettings.py;0;4
-FILE_NAME_5=2530;HTML;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2FmainSite%2Ftemplates%2Fmaster.html;0;4
-FILE_NAME_6=212;HTML;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2FmainSite%2Ftemplates%2Fshortcuts.html;0;4
-FILE_NAME_7=116;Python;0;16;1;1;0;%2Fhome%2Fpi%2Fraspberry%2Fomxplayer%2Furls.py;0;4
+current_page=3
+FILE_NAME_0=15519;Javascript;0;16;1;1;0;%2Fhome%2Fpi%2Frepos%2Fportfolio%2Fportfolio%2Flocal_static%2Fjs%2FjayScript.js;0;4
+FILE_NAME_1=285;HTML;0;16;1;1;0;%2Fhome%2Fpi%2Frepos%2Fportfolio%2Fwebsite%2Ftemplates%2Fplugins%2FwordpressFeed%2Fwordpress.html;0;4
+FILE_NAME_2=0;Markdown;0;16;1;1;0;%2Fhome%2Fpi%2Frepos%2Fblog%2Fcontent%2Fteste.md;0;4
+FILE_NAME_3=0;reStructuredText;0;16;1;1;0;%2Fhome%2Fpi%2Frepos%2Fblog%2Fcontent%2Fjweb-php-framework.rst;0;4
 
 [VTE]
 last_dir=/home/pi

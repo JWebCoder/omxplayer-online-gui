@@ -57,6 +57,7 @@ ROOT_URLCONF = 'raspberry.urls'
 
 WSGI_APPLICATION = 'raspberry.wsgi.application'
 
+X_FRAME_OPTIONS = 'ALLOW'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

@@ -1,0 +1,88 @@
+.manga-chapter{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: 1;
+	background-color:#202020;
+}
+
+.manga-chapter img{
+	width:100%;
+}
+
+.manga-chapter.hidden{
+	display: none;
+}
+
+.manga-chapter .chapter-container{
+    overflow:auto;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.manga-chapter h1{
+    margin: 10px 20px;
+    font-weight: 300;
+    font-size: 1.3em;
+}
+
+.manga-chapter .close{
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    font-size: 1.5em;
+}
+
+#mangareader .search{
+    margin: 10px 10px 0 10px;
+}
+
+#mangareader input{
+    border: 1px solid #e6e6e6;
+    padding: 5px 2px;
+    font-size: 1em;
+}
+
+#mangareader input:focus{
+    outline: none;
+}
+
+#mangareader .search-result{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    overflow: auto;
+}
+
+#mangareader .search-result ul{
+    margin: 0 5px;
+    padding: 0;
+}
+
+#mangareader .search-result li{
+    margin: 5px 0;
+    list-style: disc;
+}
+
+#mangareader .loader{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+#mangareader .hide{
+    display:none;
+}
